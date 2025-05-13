@@ -1,0 +1,10 @@
+<div class="categorias">
+  <mat-chip-set>
+    <mat-chip 
+      *ngFor="let categoria of categorias" 
+      [class.selected]="categoriaSeleccionada === categoria"
+      (click)="seleccionarCategoria(categoria)">
+      {{categoria}}
+    </mat-chip>
+  </mat-chip-set>
+</div> 

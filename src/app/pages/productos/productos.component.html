@@ -1,0 +1,13 @@
+<div class="productos-container">
+  <header class="productos-header">
+    <h1>Soluciones Financieras</h1>
+    <p>Encuentra el financiamiento ideal para tu empresa</p>
+  </header>
+
+  <div class="productos-grid">
+    <app-product-card 
+      *ngFor="let producto of productos"
+      [producto]="producto">
+    </app-product-card>
+  </div>
+</div> 

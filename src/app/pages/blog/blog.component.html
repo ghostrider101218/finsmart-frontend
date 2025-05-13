@@ -1,0 +1,38 @@
+<div class="blog-container">
+  <header class="blog-header">
+    <h1>Blog Financiero</h1>
+    <p>Conocimientos y consejos para hacer crecer tu negocio</p>
+  </header>
+
+  <app-search-bar></app-search-bar>
+  
+  <app-category-chips 
+    [categorias]="categorias"
+    [categoriaSeleccionada]="categoriaSeleccionada"
+    (categoriaChange)="filtrarPorCategoria($event)">
+  </app-category-chips>
+
+  <app-featured-article 
+    *ngIf="destacado"
+    [articulo]="destacado">
+  </app-featured-article>
+
+  <div class="posts-grid">
+    <app-article-card 
+      *ngFor="let post of posts"
+      [articulo]="post">
+    </app-article-card>
+  </div>
+
+  <div class="pagination">
+    <button mat-button [disabled]="pagina === 1">
+      <mat-icon>chevron_left</mat-icon>
+      Anterior
+    </button>
+    <span class="page-info">Página {{pagina}} de {{totalPaginas}}</span>
+    <button mat-button [disabled]="pagina === totalPaginas">
+      Siguiente
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div> 

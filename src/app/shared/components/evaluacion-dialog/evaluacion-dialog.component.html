@@ -1,0 +1,57 @@
+<h2 class="dialog-title">Ingresa los datos de tu solicitud</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="evaluacion-form">
+  <mat-tab-group>
+    <mat-tab label="Datos de Servicio">
+      <div class="form-section">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Seleccione el tipo de servicio</mat-label>
+          <mat-select formControlName="tipoServicio">
+            <mat-option *ngFor="let tipo of tiposServicio" [value]="tipo.value">{{ tipo.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Monto de Solicitud</mat-label>
+          <input matInput type="number" formControlName="montoSolicitado" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Motivo</mat-label>
+          <input matInput formControlName="motivo" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>AVAL</mat-label>
+          <input matInput formControlName="aval" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Tipo documento de AVAL</mat-label>
+          <mat-select formControlName="tipoDocumentoAval">
+            <mat-option *ngFor="let tipo of tiposDocumentoAval" [value]="tipo.value">{{ tipo.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Número documento AVAL</mat-label>
+          <input matInput formControlName="numeroDocumentoAval" />
+        </mat-form-field>
+      </div>
+    </mat-tab>
+    <mat-tab label="Datos de Empresa">
+      <div class="form-section">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>RUC</mat-label>
+          <input matInput formControlName="ruc" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Dueño</mat-label>
+          <input matInput formControlName="dueno" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>DNI dueño</mat-label>
+          <input matInput formControlName="dniDueno" />
+        </mat-form-field>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="dialog-actions">
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Solicitar Evaluación</button>
+    <button mat-button type="button" (click)="close()">Cancelar</button>
+  </div>
+</form>

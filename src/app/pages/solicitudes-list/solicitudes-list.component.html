@@ -1,0 +1,32 @@
+<div class="solicitudes-wrapper">
+  <div class="solicitudes-header">
+    <button mat-flat-button color="primary" class="btn-nueva-evaluacion" (click)="openEvaluacionDialog()">
+      Solicitar Evaluación
+    </button>
+  </div>
+  <h2 class="solicitudes-title">Lista de solicitudes de Company</h2>
+  <div class="solicitudes-table-container">
+    <table class="solicitudes-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Monto</th>
+          <th>Motivo</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evaluacion of evaluaciones">
+          <td><span class="solicitud-fecha">Evaluación {{ evaluacion.fechaCreacion | date:'dd-MM-yyyy' }}</span></td>
+          <td>S/. {{ evaluacion.montoSolicitado | number:'1.2-2' }}</td>
+          <td>{{ evaluacion.sustento }}</td>
+          <td>
+            <span class="status-chip" [ngClass]="'status-' + (evaluacion.estadoEvaluacion || '').toLowerCase().replace(' ', '-')">
+              {{ evaluacion.estadoEvaluacion }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

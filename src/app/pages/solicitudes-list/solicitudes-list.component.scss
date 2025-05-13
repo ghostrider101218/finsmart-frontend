@@ -1,0 +1,121 @@
+.solicitudes-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--background);
+}
+.solicitudes-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 3vw 1rem 3vw;
+  gap: 2rem;
+}
+.breadcrumb {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+.solicitudes-card {
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(33, 150, 243, 0.08);
+  padding: 2.5rem 2vw 2rem 2vw;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.solicitudes-title {
+  color: #1976d2;
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-decoration: underline;
+}
+.solicitudes-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+.solicitudes-table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 2rem auto;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+  background: none;
+}
+.solicitudes-table th {
+  color: #1976d2;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: left;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #b3e0ff;
+}
+.solicitudes-table td {
+  padding: 0.7rem 0.5rem;
+}
+.solicitud-fecha {
+  font-weight: 700;
+  color: var(--primary);
+}
+tr {
+  background: var(--secondary);
+  border-radius: 8px;
+}
+.status-chip {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 110px;
+  text-align: center;
+}
+.status-en-proceso {
+  background: #ffe066;
+  color: #444;
+}
+.status-pendiente {
+  background: #e0e0e0;
+  color: #666;
+}
+.status-aceptado {
+  background: #22c55e;
+  color: #fff;
+}
+.status-rechazado {
+  background: #ef4444;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .solicitudes-card {
+    padding: 1rem 0.5rem;
+  }
+  .solicitudes-title {
+    font-size: 1.2rem;
+  }
+  .solicitudes-table th, .solicitudes-table td {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.2rem;
+  }
+}
+.btn-nueva-evaluacion {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 1rem 2.8rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+  letter-spacing: 0.5px;
+  background: var(--primary);
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-nueva-evaluacion:hover {
+  background: var(--accent);
+  color: var(--text-inverted);
+}

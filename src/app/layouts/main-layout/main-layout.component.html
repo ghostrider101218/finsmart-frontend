@@ -1,0 +1,127 @@
+<div class="layout-container">
+  <!-- Top Navigation Bar -->
+  <mat-toolbar color="primary" class="toolbar">
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <a routerLink="/" class="brand">
+      <span class="brand-name">FinSmart</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="desktop-nav">
+      <a mat-button routerLink="/financiamiento">Financiamiento</a>
+      <a mat-button routerLink="/empresas">Empresas</a>
+      <a mat-button routerLink="/blog">Blog</a>
+      <a mat-button routerLink="/contacto">Contacto</a>
+    </div>
+
+    <span class="spacer"></span>
+
+    <!-- User Menu -->
+    <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button">
+      <mat-icon>account_circle</mat-icon>
+      <span>Mi Cuenta</span>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <a mat-menu-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a mat-menu-item routerLink="/perfil">
+        <mat-icon>person</mat-icon>
+        <span>Mi Perfil</span>
+      </a>
+      <a mat-menu-item routerLink="/configuracion">
+        <mat-icon>settings</mat-icon>
+        <span>Configuración</span>
+      </a>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <!-- Mobile Sidenav -->
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="over" class="sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard" (click)="sidenav.close()">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </a>
+        <a mat-list-item routerLink="/financiamiento" (click)="sidenav.close()">
+          <mat-icon>account_balance</mat-icon>
+          <span>Financiamiento</span>
+        </a>
+        <a mat-list-item routerLink="/empresas" (click)="sidenav.close()">
+          <mat-icon>business</mat-icon>
+          <span>Empresas</span>
+        </a>
+        <a mat-list-item routerLink="/blog" (click)="sidenav.close()">
+          <mat-icon>article</mat-icon>
+          <span>Blog</span>
+        </a>
+        <a mat-list-item routerLink="/contacto" (click)="sidenav.close()">
+          <mat-icon>contact_support</mat-icon>
+          <span>Contacto</span>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/perfil" (click)="sidenav.close()">
+          <mat-icon>person</mat-icon>
+          <span>Mi Perfil</span>
+        </a>
+        <a mat-list-item routerLink="/configuracion" (click)="sidenav.close()">
+          <mat-icon>settings</mat-icon>
+          <span>Configuración</span>
+        </a>
+        <a mat-list-item (click)="logout(); sidenav.close()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Cerrar Sesión</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <!-- Main Content -->
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>FinSmart</h3>
+            <p>Financiamiento inteligente para empresas modernas</p>
+          </div>
+          <div class="footer-section">
+            <h4>Enlaces Rápidos</h4>
+            <a routerLink="/about">Sobre Nosotros</a>
+            <a routerLink="/blog">Blog</a>
+            <a routerLink="/contacto">Contacto</a>
+          </div>
+          <div class="footer-section">
+            <h4>Legal</h4>
+            <a routerLink="/privacidad">Política de Privacidad</a>
+            <a routerLink="/terminos">Términos y Condiciones</a>
+          </div>
+          <div class="footer-section">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+              <a href="#" target="_blank"><mat-icon>facebook</mat-icon></a>
+              <a href="#" target="_blank"><mat-icon>linkedin</mat-icon></a>
+              <a href="#" target="_blank"><mat-icon>twitter</mat-icon></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 FinSmart. Todos los derechos reservados.</p>
+        </div>
+      </footer>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

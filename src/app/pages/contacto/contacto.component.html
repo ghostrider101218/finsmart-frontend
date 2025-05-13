@@ -1,0 +1,15 @@
+<div class="contacto-container">
+  <header class="contacto-header">
+    <h1>Contáctanos</h1>
+    <p>Estamos aquí para ayudarte a hacer crecer tu negocio</p>
+  </header>
+
+  <div class="contacto-content">
+    <app-contact-info></app-contact-info>
+    <app-contact-form 
+      [form]="contactForm"
+      [enviando]="enviando"
+      (formSubmit)="onSubmit()">
+    </app-contact-form>
+  </div>
+</div> 

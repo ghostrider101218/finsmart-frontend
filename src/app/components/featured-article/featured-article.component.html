@@ -1,0 +1,20 @@
+<div class="featured-post">
+  <mat-card class="featured-card">
+    <img [src]="articulo.imagen" [alt]="articulo.titulo" class="featured-image">
+    <div class="featured-content">
+      <mat-chip-set>
+        <mat-chip>{{articulo.categoria}}</mat-chip>
+        <mat-chip>{{articulo.tiempoLectura}} min lectura</mat-chip>
+      </mat-chip-set>
+      <h2>{{articulo.titulo}}</h2>
+      <p>{{articulo.resumen}}</p>
+      <div class="post-meta">
+        <span class="autor">Por {{articulo.autor}}</span>
+        <span class="fecha">{{articulo.fecha | date}}</span>
+      </div>
+      <button mat-raised-button color="primary" [routerLink]="['/blog', articulo.id]">
+        Leer más
+      </button>
+    </div>
+  </mat-card>
+</div> 

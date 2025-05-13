@@ -1,0 +1,71 @@
+.cdk-overlay-pane, .mat-dialog-container {
+  min-height: 600px !important;
+  max-height: 90vh !important;
+  height: auto !important;
+}
+.dialog-title {
+  text-align: center;
+  color: #264a8a;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 2.2rem;
+}
+.evaluacion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.form-columns {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.form-section {
+  background: #d6f7ff;
+  border-radius: 14px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 320px;
+  max-width: 350px;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+.form-section h3 {
+  color: #264a8a;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.full-width {
+  width: 100%;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: #fff !important;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 900px) {
+  .form-columns {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .form-section {
+    min-width: 0;
+    max-width: 100%;
+    padding: 1.2rem 0.5rem;
+  }
+}

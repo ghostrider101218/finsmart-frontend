@@ -1,0 +1,52 @@
+<mat-card class="producto-card">
+  <div class="producto-header">
+    <mat-icon [color]="'primary'">{{producto.icon}}</mat-icon>
+    <h2>{{producto.nombre}}</h2>
+  </div>
+  
+  <p class="producto-descripcion">{{producto.descripcion}}</p>
+
+  <div class="producto-features">
+    <div class="feature">
+      <span class="label">Tasa desde:</span>
+      <span class="value">{{producto.tasaDesde}}% anual</span>
+    </div>
+    <div class="feature">
+      <span class="label">Plazo máximo:</span>
+      <span class="value">{{producto.plazoMaximo}} meses</span>
+    </div>
+    <div class="feature">
+      <span class="label">Hasta:</span>
+      <span class="value">S/. {{producto.montoMaximo | number}}</span>
+    </div>
+  </div>
+
+  <div class="producto-ventajas">
+    <h3>Ventajas</h3>
+    <ul>
+      <li *ngFor="let ventaja of producto.ventajas">
+        <mat-icon class="check-icon">check_circle</mat-icon>
+        {{ventaja}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="producto-requisitos">
+    <h3>Requisitos mínimos</h3>
+    <mat-chip-set>
+      <mat-chip *ngFor="let requisito of producto.requisitos">
+        {{requisito}}
+      </mat-chip>
+    </mat-chip-set>
+  </div>
+
+  <div class="producto-actions">
+    <button mat-raised-button color="primary" [routerLink]="['/financiamiento/simulador']" 
+            [queryParams]="{tipo: producto.id}">
+      Simular Préstamo
+    </button>
+    <button mat-stroked-button color="primary" [routerLink]="['/contacto']">
+      Más Información
+    </button>
+  </div>
+</mat-card> 

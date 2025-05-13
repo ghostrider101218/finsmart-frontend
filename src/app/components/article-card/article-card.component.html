@@ -1,0 +1,18 @@
+<mat-card class="article-card">
+  <img [src]="articulo.imagen" [alt]="articulo.titulo" class="article-image">
+  <div class="article-content">
+    <mat-chip-set>
+      <mat-chip>{{articulo.categoria}}</mat-chip>
+      <mat-chip>{{articulo.tiempoLectura}} min lectura</mat-chip>
+    </mat-chip-set>
+    <h3>{{articulo.titulo}}</h3>
+    <p>{{articulo.resumen}}</p>
+    <div class="article-meta">
+      <span class="autor">Por {{articulo.autor}}</span>
+      <span class="fecha">{{articulo.fecha | date}}</span>
+    </div>
+    <button mat-button color="primary" [routerLink]="['/blog', articulo.id]">
+      Leer más
+    </button>
+  </div>
+</mat-card> 

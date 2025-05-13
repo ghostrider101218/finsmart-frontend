@@ -1,0 +1,10 @@
+<div class="search-bar">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Buscar artículos</mat-label>
+    <input matInput 
+           [(ngModel)]="searchTerm"
+           (keyup.enter)="onSearch()"
+           placeholder="Escribe un tema...">
+    <mat-icon matSuffix (click)="onSearch()">search</mat-icon>
+  </mat-form-field>
+</div> 

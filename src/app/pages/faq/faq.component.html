@@ -1,0 +1,22 @@
+<div class="faq-container">
+  <header class="faq-header">
+    <h1>Preguntas Frecuentes</h1>
+    <p>Encuentra respuestas a las preguntas más comunes sobre nuestros servicios</p>
+  </header>
+
+  <div class="faq-content">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let faq of faqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{faq.pregunta}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{faq.respuesta}}</p>
+        <mat-chip-listbox>
+          <mat-chip-option>{{faq.categoria}}</mat-chip-option>
+        </mat-chip-listbox>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div> 

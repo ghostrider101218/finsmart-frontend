@@ -1,0 +1,56 @@
+<mat-card>
+  <h2>Envíanos un mensaje</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Tu nombre">
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="tu@email.com">
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          El email es requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          Ingresa un email válido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Asunto</mat-label>
+        <mat-select formControlName="asunto">
+          <mat-option value="informacion">Información General</mat-option>
+          <mat-option value="prestamo">Solicitud de Préstamo</mat-option>
+          <mat-option value="soporte">Soporte Técnico</mat-option>
+          <mat-option value="otro">Otro</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput formControlName="mensaje" rows="6" 
+                  placeholder="¿En qué podemos ayudarte?"></textarea>
+        <mat-error *ngIf="form.get('mensaje')?.hasError('required')">
+          El mensaje es requerido
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" 
+            [disabled]="!form.valid || enviando">
+      <span *ngIf="!enviando">Enviar Mensaje</span>
+      <span *ngIf="enviando">Enviando...</span>
+    </button>
+  </form>
+</mat-card> 

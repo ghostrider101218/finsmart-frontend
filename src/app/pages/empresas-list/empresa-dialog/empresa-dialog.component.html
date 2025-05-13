@@ -1,0 +1,93 @@
+<div class="dialog-container" mat-dialog-content>
+  <h2 class="dialog-title" mat-dialog-title>{{ modo === 'crear' ? 'Nueva Empresa' : 'Editar Empresa' }}</h2>
+  
+  <form [formGroup]="empresaForm" (ngSubmit)="guardarEmpresa()" class="empresa-form">
+    <!-- Nombre de la empresa -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Nombre de la empresa</mat-label>
+      <input matInput formControlName="nombreEmpresa" placeholder="Ingrese el nombre" required>
+      <mat-icon matSuffix>business</mat-icon>
+      <mat-error *ngIf="empresaForm.get('nombreEmpresa')?.invalid">
+        {{ getErrorMessage('nombreEmpresa') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- RUC -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>RUC</mat-label>
+      <input matInput formControlName="ruc" placeholder="Ingrese el RUC" maxlength="11" required>
+      <mat-icon matSuffix>badge</mat-icon>
+      <mat-hint align="end">{{empresaForm.get('ruc')?.value?.length || 0}}/11</mat-hint>
+      <mat-error *ngIf="empresaForm.get('ruc')?.invalid">
+        {{ getErrorMessage('ruc') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de fundación -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Fecha de fundación</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fundacion" [max]="maxDate" required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="empresaForm.get('fundacion')?.invalid">
+        {{ getErrorMessage('fundacion') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Número de trabajadores -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Número de trabajadores</mat-label>
+      <input matInput type="number" formControlName="numTrabajadores" min="1" max="999999" required>
+      <mat-icon matSuffix>people</mat-icon>
+      <mat-error *ngIf="empresaForm.get('numTrabajadores')?.invalid">
+        {{ getErrorMessage('numTrabajadores') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Categoría -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Categoría</mat-label>
+      <mat-select formControlName="idCategoria" required>
+        <mat-option [value]="101">Pequeña empresa</mat-option>
+        <mat-option [value]="102">Mediana empresa</mat-option>
+        <mat-option [value]="103">Gran empresa</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>category</mat-icon>
+      <mat-error *ngIf="empresaForm.get('idCategoria')?.invalid">
+        {{ getErrorMessage('idCategoria') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Historial Crediticio -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Historial Crediticio</mat-label>
+      <mat-select formControlName="idHistorialCrediticio" required>
+
+        <mat-option [value]="301">Bueno</mat-option>
+        <mat-option [value]="302">Regular</mat-option>
+        <mat-option [value]="303">Malo</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>credit_score</mat-icon>
+      <mat-error *ngIf="empresaForm.get('idHistorialCrediticio')?.invalid">
+        {{ getErrorMessage('idHistorialCrediticio') }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Admisible -->
+    <mat-checkbox formControlName="isAdmisible" class="admisible-checkbox">
+      Empresa admisible para préstamos
+    </mat-checkbox>
+
+    <!-- Botones de acción -->
+    <div class="action-buttons" mat-dialog-actions>
+      <button mat-button type="button" (click)="cancelar()">
+        <mat-icon>close</mat-icon>
+        Cancelar
+      </button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="empresaForm.invalid">
+        <mat-icon>{{ modo === 'crear' ? 'add' : 'save' }}</mat-icon>
+        {{ modo === 'crear' ? 'Crear' : 'Guardar cambios' }}
+      </button>
+    </div>
+  </form>
+</div> 

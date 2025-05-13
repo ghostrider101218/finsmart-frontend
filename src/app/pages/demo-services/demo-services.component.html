@@ -1,0 +1,87 @@
+<div class="container">
+  <h1>Demo de Servicios</h1>
+  
+  <section>
+    <h2>Empresas</h2>
+    <button (click)="createEmpresa()">Crear Nueva Empresa</button>
+    
+    <div class="data-list" *ngIf="empresas.length > 0">
+      <div class="data-card" *ngFor="let empresa of empresas">
+        <h3>{{ empresa.nombreEmpresa }}</h3>
+        <p><strong>RUC:</strong> {{ empresa.ruc }}</p>
+        <p><strong>Fundación:</strong> {{ empresa.fundacion | date }}</p>
+        <p><strong>Trabajadores:</strong> {{ empresa.numTrabajadores }}</p>
+        <p><strong>Admisible:</strong> {{ empresa.isAdmisible ? 'Sí' : 'No' }}</p>
+      </div>
+    </div>
+    <p *ngIf="empresas.length === 0">No hay empresas para mostrar.</p>
+  </section>
+  
+  <section>
+    <h2>Encargados</h2>
+    <button (click)="createEncargado()">Crear Nuevo Encargado</button>
+    
+    <div class="data-list" *ngIf="encargados.length > 0">
+      <div class="data-card" *ngFor="let encargado of encargados">
+        <h3>{{ encargado.nombreEncargado }}</h3>
+        <p><strong>DNI:</strong> {{ encargado.dniEncargado }}</p>
+        <p><strong>Puesto:</strong> {{ encargado.puesto }}</p>
+      </div>
+    </div>
+    <p *ngIf="encargados.length === 0">No hay encargados para mostrar.</p>
+  </section>
+  
+  <section>
+    <h2>Evaluaciones</h2>
+    <button (click)="createEvaluacion()">Crear Nueva Evaluación</button>
+    
+    <div class="data-list" *ngIf="evaluaciones.length > 0">
+      <div class="data-card" *ngFor="let evaluacion of evaluaciones">
+        <h3>Evaluación #{{ evaluacion.idEvaluacion }}</h3>
+        <p><strong>Fecha:</strong> {{ evaluacion.fechaCreacion | date }}</p>
+        <p><strong>Monto:</strong> S/. {{ evaluacion.montoSolicitado }}</p>
+        <p><strong>Estado:</strong> {{ evaluacion.estadoEvaluacion }}</p>
+        
+        <!-- Mostrar los campos de relación que vienen del backend -->
+        <p *ngIf="evaluacion.nombreEmpresa"><strong>Empresa:</strong> {{ evaluacion.nombreEmpresa }}</p>
+        <p *ngIf="evaluacion.nombreEncargado"><strong>Encargado:</strong> {{ evaluacion.nombreEncargado }}</p>
+        <p *ngIf="evaluacion.tipoServicio"><strong>Servicio:</strong> {{ evaluacion.tipoServicio }}</p>
+        
+        <button class="small-button" (click)="cambiarEstadoEvaluacion(evaluacion.idEvaluacion, 'Aprobado')">Aprobar</button>
+        <button class="small-button reject" (click)="cambiarEstadoEvaluacion(evaluacion.idEvaluacion, 'Rechazado')">Rechazar</button>
+      </div>
+    </div>
+    <p *ngIf="evaluaciones.length === 0">No hay evaluaciones para mostrar.</p>
+  </section>
+
+  <section>
+    <h2>Búsquedas Avanzadas</h2>
+
+    <div class="search-section">
+      <h3>Filtrar evaluaciones por estado</h3>
+      <div class="filter-buttons">
+        <button (click)="buscarPorEstado('Pendiente')">Pendientes</button>
+        <button (click)="buscarPorEstado('Aprobado')">Aprobadas</button>
+        <button (click)="buscarPorEstado('Rechazado')">Rechazadas</button>
+        <button (click)="loadEvaluaciones()">Todas</button>
+      </div>
+
+      <h3>Filtrar evaluaciones por empresa</h3>
+      <div class="filter-select" *ngIf="empresas.length > 0">
+        <select #empresaSelect>
+          <option value="">Seleccione una empresa</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.idEmpresa">
+            {{ empresa.nombreEmpresa }}
+          </option>
+        </select>
+        <button (click)="buscarPorEmpresa(empresaSelect.value)">Buscar</button>
+      </div>
+
+      <h3>Filtrar evaluaciones por monto mínimo</h3>
+      <div class="filter-input">
+        <input type="number" #montoInput placeholder="Monto mínimo" value="10000">
+        <button (click)="buscarPorMontoMayor(montoInput.value)">Buscar</button>
+      </div>
+    </div>
+  </section>
+</div> 
